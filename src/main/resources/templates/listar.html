@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar</title>
+</head>
+<body>
+<h1>Listado</h1>
+<div>
+  <label for="filtroEstado">Mostrar jugadores:</label>
+  <select id="filtroEstado" onchange="filtrarJugadores()">
+    <option value="todos">Todos</option>
+    <option value="activos">Activos</option>
+    <option value="inactivos">Inactivos</option>
+  </select>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido1</th>
+    <th>Apellido2</th>
+    <th>Posición</th>
+    <th>Pierna Dominante</th>
+    <th>Nacimiento</th>
+    <th>Estatura</th>
+    <th>Peso</th>
+    <th>Activo</th>
+    <th>Perfil</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="jugador : ${jugadores}">
+    <td th:text="${jugador.nombre}">Nombre</td>
+    <td th:text="${jugador.apellido1}">Apellido1</td>
+    <td th:text="${jugador.apellido2}">Apellido2</td>
+    <td th:text="${jugador.posicion}">Posición</td>
+    <td th:text="${jugador.piernaDominante}">Pierna Dominante</td>
+    <td th:text="${jugador.nacimiento}">Nacimiento</td>
+    <td th:text="${jugador.estatura}">Estatura</td>
+    <td th:text="${jugador.peso}">Peso</td>
+    <td th:text="${jugador.activo}">Activo</td>
+    <td>
+      <a th:href="@{/jugador/{id}(id=${jugador.id})}" th:text="'Ver perfil'">Ver perfil</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p><a href="/">Volver al inicio</a></p>
+</body>
+<script>
+  function filtrarJugadores() {
+    let filtro = document.getElementById("filtroEstado").value;
+    let filas = document.querySelectorAll("tbody tr");
+
+    filas.forEach(function (fila) {
+      let estado = fila.querySelector("td:nth-child(9)").innerText;
+
+      if (filtro === "todos" || (filtro === "activos" && estado === "true") || (filtro === "inactivos" && estado === "false")) {
+        fila.style.display = "";
+      } else {
+        fila.style.display = "none";
+      }
+    });
+  }
+</script>
+</html>

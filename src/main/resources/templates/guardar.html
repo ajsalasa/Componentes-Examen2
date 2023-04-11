@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Insertar:
+<form action="#" th:action="@{/guardar}" th:object="${jugador}" method="post">
+    <li><label for="name">Nombre</label>
+    <input type="text" th:field="*{nombre}" id="name"></li>
+
+    <li><label for="apellido1">Primer apellido</label>
+    <input type="text" th:field="*{apellido1}" id="apellido1"></li>
+
+    <li><label for="apellido2">Segundo apellido</label>
+    <input type="text" th:field="*{apellido2}" id="apellido2"></li>
+
+    <li><label for="posicion">Posicion</label>
+    <input type="text" th:field="*{posicion}" id="posicion"></li>
+
+    <li><label for="piernaDominante">Pierna Dominante</label>
+    <input type="text" th:field="*{piernaDominante}" id="piernaDominante"></li>
+
+    <li><label for="nacimiento">Fecha de Nacimiento</label>
+    <input type="date" th:field="*{nacimiento}" id="nacimiento"></li>
+
+    <li><label for="estatura">Estatura</label>
+    <input type="number" th:field="*{estatura}" id="estatura"></li>
+
+    <li><label for="peso">Peso</label>
+    <input type="number" th:field="*{peso}" id="peso"></li>
+
+    <li><label for="activo">Activo</label>
+    <input type="checkbox" th:field="*{activo}" id="activo"></li>
+
+
+
+
+    <input type="submit" value="Guardar">
+</form>
+</body>
+</html>

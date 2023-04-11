@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jugador</title>
+</head>
+<body>
+<p><strong>Nombre:</strong> <span th:text="${jugador.nombre}">Nombre</span></p>
+<p><strong>Apellido 1:</strong> <span th:text="${jugador.apellido1}">Apellido1</span></p>
+<p><strong>Apellido 2:</strong> <span th:text="${jugador.apellido2}">Apellido2</span></p>
+<p><strong>Posición:</strong> <span th:text="${jugador.posicion}">Posición</span></p>
+<p><strong>Pierna Dominante:</strong> <span th:text="${jugador.piernaDominante}">Pierna Dominante</span></p>
+<p><strong>Nacimiento:</strong> <span th:text="${jugador.nacimiento}">Nacimiento</span></p>
+<p><strong>Estatura:</strong> <span th:text="${jugador.estatura}">Estatura</span></p>
+<p><strong>Peso:</strong> <span th:text="${jugador.peso}">Peso</span></p>
+<p><strong>Activo:</strong> <span th:text="${jugador.activo}">Activo</span></p>
+<!-- Botón "Activar" si el jugador está inactivo -->
+<a th:if="${!jugador.activo}" th:href="@{/jugador/activar/{id}(id=${jugador.id})}" th:text="'Activar'">Activar</a>
+<!-- Botón "Desactivar" si el jugador está activo -->
+<a th:if="${jugador.activo}" th:href="@{/jugador/desactivar/{id}(id=${jugador.id})}" th:text="'Desactivar'">Desactivar</a>
+<p><a href="/listar">Volver a listar</a></p>
+</body>
+</html>
